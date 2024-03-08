@@ -1,0 +1,1285 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: mike.ralphson@gmail.com
+    name: Mike Ralphson
+    url: https://github.com/mermade/mashery2openapi
+  description: Test our API services using I/O Docs.
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: Rotten Tomatoes
+  version: "1.0"
+  x-apisguru-categories:
+  - media
+  x-logo:
+    url: https://twitter.com/RottenTomatoes/profile_image?size=original
+  x-mashery-id: "1217"
+  x-origin:
+  - version: "2.0"
+    format: swagger
+    url: https://raw.githubusercontent.com/Mermade/openapi_specifications/master/mashery/api.rottentomatoes.com/Rotten-Tomatoes/1.0/swagger.json
+  x-providerName: rottentomatoes.com
+  x-unofficialSpec: true
+  x-konfig-has-globally-required-security: true
+externalDocs:
+  description: You can also view our written documentation.
+  url: http://developer.rottentomatoes.com/io-docs/docs
+servers:
+- url: http://api.rottentomatoes.com/api/public/v1.0
+security:
+- key: []
+tags:
+- name: Detailed Info
+- name: Movie Lists
+- name: DVD Lists
+- name: Top Level Lists
+- name: Search
+paths:
+  /lists.json:
+    get:
+      operationId: TopLevelLists_getData
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Top Level Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists.json
+      x-accepts: application/json
+  /lists/dvds.json:
+    get:
+      operationId: TopLevelLists_getDvds
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Top Level Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-dvds.json
+      x-accepts: application/json
+  /lists/dvds/current_releases.json:
+    get:
+      operationId: DvdLists_getCurrentReleases
+      parameters:
+      - description: The amount of new release dvds to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-0-schema
+        style: form
+      - description: The selected page of current DVD releases
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-1-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - DVD Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-dvds-current_releases.json
+      x-accepts: application/json
+  /lists/dvds/new_releases.json:
+    get:
+      operationId: DvdLists_getNewReleasesJson
+      parameters:
+      - description: The amount of new release dvds to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-0-schema
+        style: form
+      - description: The selected page of new release DVDs
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-1-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - DVD Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-dvds-new_releases.json
+      x-accepts: application/json
+  /lists/dvds/top_rentals.json:
+    get:
+      operationId: DvdLists_getTopRentalsJson
+      parameters:
+      - description: Limits the number of top rentals returned
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: "10"
+          example: "10"
+          type: string
+          x-konfig-original-example: "10"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-0-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-1-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - DVD Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-dvds-top_rentals.json
+      x-accepts: application/json
+  /lists/dvds/upcoming.json:
+    get:
+      operationId: DvdLists_getUpcomingDvds
+      parameters:
+      - description: The amount of upcoming dvds to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-0-schema
+        style: form
+      - description: The selected page of upcoming DVDs
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-1-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - DVD Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-dvds-upcoming.json
+      x-accepts: application/json
+  /lists/movies.json:
+    get:
+      operationId: TopLevelLists_getMoviesJson
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Top Level Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-movies.json
+      x-accepts: application/json
+  /lists/movies/box_office.json:
+    get:
+      operationId: MovieLists_getBoxOfficeJson
+      parameters:
+      - description: Limits the number of movies returned
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-0-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-1-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Movie Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-movies-box_office.json
+      x-accepts: application/json
+  /lists/movies/in_theaters.json:
+    get:
+      operationId: MovieLists_getIntheaterMovies
+      parameters:
+      - description: The amount of movies in theaters to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-0-schema
+        style: form
+      - description: The selected page of in theaters movies
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-1-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Movie Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-movies-in_theaters.json
+      x-accepts: application/json
+  /lists/movies/opening.json:
+    get:
+      operationId: MovieLists_getOpeningMovies
+      parameters:
+      - description: Limits the number of opening movies returned
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-0-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-1-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Movie Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-movies-opening.json
+      x-accepts: application/json
+  /lists/movies/upcoming.json:
+    get:
+      operationId: MovieLists_getUpcomingMovies
+      parameters:
+      - description: The amount of upcoming movies to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-0-schema
+        style: form
+      - description: The selected page of upcoming movies
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-1-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Movie Lists
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--lists-movies-upcoming.json
+      x-accepts: application/json
+  /movie_alias.json:
+    get:
+      operationId: DetailedInfo_getMovieAliasInfo
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: true
+        in: query
+        name: id
+        required: false
+        schema:
+          default: "0031381"
+          example: "0031381"
+          type: string
+          x-konfig-original-example: "0031381"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movie_alias.json-get-parameters-0-schema
+        style: form
+      - description: Only supports imdb lookup at this time
+        explode: true
+        in: query
+        name: type
+        required: false
+        schema:
+          default: imdb
+          example: imdb
+          type: string
+          x-konfig-original-example: imdb
+          x-konfig-generated-schema: konfig-generated-schema-paths--movie_alias.json-get-parameters-1-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movie_alias.json
+      x-accepts: application/json
+  /movies.json:
+    get:
+      operationId: Search_moviesJson
+      parameters:
+      - description: The plain text search query to search for a movie. Remember to
+          URI encode this!
+        explode: true
+        in: query
+        name: q
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The amount of movie search results to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "10"
+          example: "10"
+          type: string
+          x-konfig-original-example: "10"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies.json-get-parameters-1-schema
+        style: form
+      - description: The selected page of movie search results
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies.json-get-parameters-2-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Search
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies.json
+      x-accepts: application/json
+  /movies/{id}.json:
+    get:
+      operationId: DetailedInfo_getMovieByIdJson
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id.json-get-parameters-0-schema
+        style: simple
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies-id.json
+      x-accepts: application/json
+  /movies/{id}/cast.json:
+    get:
+      operationId: DetailedInfo_getMovieCast
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-cast.json-get-parameters-0-schema
+        style: simple
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies-id-cast.json
+      x-accepts: application/json
+  /movies/{id}/clips.json:
+    get:
+      operationId: DetailedInfo_getClipById
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-clips.json-get-parameters-0-schema
+        style: simple
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies-id-clips.json
+      x-accepts: application/json
+  /movies/{id}/reviews.json:
+    get:
+      operationId: DetailedInfo_getMovieReviews
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-0-schema
+        style: simple
+      - description: "3 different review types are possible: 'all', 'top_critic' and\
+          \ 'dvd'. 'top_critic' shows all the Rotten Tomatoes designated top critics.\
+          \ 'dvd' pulls the reviews given on the DVD of the movie. 'all' as the name\
+          \ implies retrieves all reviews."
+        explode: true
+        in: query
+        name: review_type
+        required: false
+        schema:
+          default: top_critic
+          example: top_critic
+          type: string
+          x-konfig-original-example: top_critic
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-1-schema
+        style: form
+      - description: The number of reviews to show per page
+        explode: true
+        in: query
+        name: page_limit
+        required: false
+        schema:
+          default: "20"
+          example: "20"
+          type: string
+          x-konfig-original-example: "20"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-2-schema
+        style: form
+      - description: The selected page of reviews
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-3-schema
+        style: form
+      - description: "Provides localized data for the selected country (ISO 3166-1\
+          \ alpha-2) if available. Otherwise, returns US data."
+        explode: true
+        in: query
+        name: country
+        required: false
+        schema:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-4-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies-id-reviews.json
+      x-accepts: application/json
+  /movies/{id}/similar.json:
+    get:
+      operationId: DetailedInfo_findSimilarMovies
+      parameters:
+      - description: Movie ID. You can use the movies search endpoint or peruse the
+          lists of movies/dvds to get the Movie ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-similar.json-get-parameters-0-schema
+        style: simple
+      - description: Limit the number of similar movies to show
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: "5"
+          example: "5"
+          type: string
+          x-konfig-original-example: "5"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-similar.json-get-parameters-1-schema
+        style: form
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+      summary: ""
+      tags:
+      - Detailed Info
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--movies-id-similar.json
+      x-accepts: application/json
+components:
+  schemas:
+    konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-1-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-2-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-1-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-2-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-0-schema:
+      example: "10"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-1-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-1-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-2-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-1-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-1-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-2-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-1-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-0-schema:
+      example: "16"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-1-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-2-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movie_alias.json-get-parameters-0-schema:
+      example: "0031381"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movie_alias.json-get-parameters-1-schema:
+      example: imdb
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies.json-get-parameters-1-schema:
+      example: "10"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies.json-get-parameters-2-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id.json-get-parameters-0-schema:
+      example: "770672122"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-cast.json-get-parameters-0-schema:
+      example: "770672122"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-clips.json-get-parameters-0-schema:
+      example: "770672122"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-0-schema:
+      example: "770672122"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-1-schema:
+      example: top_critic
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-2-schema:
+      example: "20"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-3-schema:
+      example: "1"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-4-schema:
+      example: us
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-similar.json-get-parameters-0-schema:
+      example: "770672122"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--movies-id-similar.json-get-parameters-1-schema:
+      example: "5"
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-single-parameter-schema-get--lists.json:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--lists-dvds.json:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--lists-dvds-current_releases.json:
+      properties:
+        page_limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-0-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-1-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-current_releases.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-dvds-new_releases.json:
+      properties:
+        page_limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-0-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-1-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-new_releases.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-dvds-top_rentals.json:
+      properties:
+        limit:
+          default: "10"
+          example: "10"
+          type: string
+          x-konfig-original-example: "10"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-0-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-top_rentals.json-get-parameters-1-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - limit
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-dvds-upcoming.json:
+      properties:
+        page_limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-0-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-1-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-dvds-upcoming.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-movies.json:
+      properties: {}
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter: []
+    konfig-generated-schema-single-parameter-schema-get--lists-movies-box_office.json:
+      properties:
+        limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-0-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-box_office.json-get-parameters-1-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - limit
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-movies-in_theaters.json:
+      properties:
+        page_limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-0-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-1-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-in_theaters.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-movies-opening.json:
+      properties:
+        limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-0-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-opening.json-get-parameters-1-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - limit
+      - country
+    konfig-generated-schema-single-parameter-schema-get--lists-movies-upcoming.json:
+      properties:
+        page_limit:
+          default: "16"
+          example: "16"
+          type: string
+          x-konfig-original-example: "16"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-0-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-1-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--lists-movies-upcoming.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--movie_alias.json:
+      properties:
+        id:
+          default: "0031381"
+          example: "0031381"
+          type: string
+          x-konfig-original-example: "0031381"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movie_alias.json-get-parameters-0-schema
+        type:
+          default: imdb
+          example: imdb
+          type: string
+          x-konfig-original-example: imdb
+          x-konfig-generated-schema: konfig-generated-schema-paths--movie_alias.json-get-parameters-1-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - type
+    konfig-generated-schema-single-parameter-schema-get--movies.json:
+      properties:
+        q:
+          type: string
+        page_limit:
+          default: "10"
+          example: "10"
+          type: string
+          x-konfig-original-example: "10"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies.json-get-parameters-1-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies.json-get-parameters-2-schema
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - q
+      - page_limit
+      - page
+    konfig-generated-schema-single-parameter-schema-get--movies-id.json:
+      properties:
+        id:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id.json-get-parameters-0-schema
+      required:
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+    konfig-generated-schema-single-parameter-schema-get--movies-id-cast.json:
+      properties:
+        id:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-cast.json-get-parameters-0-schema
+      required:
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+    konfig-generated-schema-single-parameter-schema-get--movies-id-clips.json:
+      properties:
+        id:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-clips.json-get-parameters-0-schema
+      required:
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+    konfig-generated-schema-single-parameter-schema-get--movies-id-reviews.json:
+      properties:
+        id:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-0-schema
+        review_type:
+          default: top_critic
+          example: top_critic
+          type: string
+          x-konfig-original-example: top_critic
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-1-schema
+        page_limit:
+          default: "20"
+          example: "20"
+          type: string
+          x-konfig-original-example: "20"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-2-schema
+        page:
+          default: "1"
+          example: "1"
+          type: string
+          x-konfig-original-example: "1"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-3-schema
+        country:
+          default: us
+          example: us
+          type: string
+          x-konfig-original-example: us
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-reviews.json-get-parameters-4-schema
+      required:
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - review_type
+      - page_limit
+      - page
+      - country
+    konfig-generated-schema-single-parameter-schema-get--movies-id-similar.json:
+      properties:
+        id:
+          default: "770672122"
+          example: "770672122"
+          type: string
+          x-konfig-original-example: "770672122"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-similar.json-get-parameters-0-schema
+        limit:
+          default: "5"
+          example: "5"
+          type: string
+          x-konfig-original-example: "5"
+          x-konfig-generated-schema: konfig-generated-schema-paths--movies-id-similar.json-get-parameters-1-schema
+      required:
+      - id
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - id
+      - limit
+  securitySchemes:
+    key:
+      in: query
+      name: apikey
+      type: apiKey
+      x-konfig-globally-required-security: true
+
