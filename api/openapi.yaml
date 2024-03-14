@@ -21,6 +21,7 @@ info:
     url: https://raw.githubusercontent.com/Mermade/openapi_specifications/master/mashery/api.rottentomatoes.com/Rotten-Tomatoes/1.0/swagger.json
   x-providerName: rottentomatoes.com
   x-unofficialSpec: true
+  x-api-status-urls: false
   x-konfig-has-globally-required-security: true
 externalDocs:
   description: You can also view our written documentation.
